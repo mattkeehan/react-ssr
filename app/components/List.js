@@ -2,16 +2,23 @@ import React from 'react';
 
 export default function(props) {
 
-    const { pokemon, location } = props
+    const { wordPrediction, location } = props
     const { ability } = location.match.params;
+
+    console.log(wordPrediction);
+    console.log('...');
+
+    wordPrediction.map(poke => {
+      console.log(poke);
+      console.log('-');
+    })
 
     return (
         <div>
             <h3>{ability}</h3>
             <ul>
-                { pokemon.map(poke => {
-                    const { pokemon } = poke;
-                    return <li key={pokemon.name}>{pokemon.name}</li>
+                { wordPrediction.map(poke => {
+                    return <li key={poke.word}>{poke.word}</li>
                 })}
             </ul>
         </div>

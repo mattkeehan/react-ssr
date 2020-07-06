@@ -6,7 +6,7 @@ import App from './components/App';
 
 render((
     <Router>
-        <App pokemon={window.__PRELOADED_STATE__}/>
+        <App wordPrediction={window.__PRELOADED_STATE__}/>
     </Router>), 
     document.getElementById('root')
 );
