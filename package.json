@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:server": "babel ./app/server -d build/server",
-    "build:watch:server": "babel ./app/server -d build/server --watch",
+    "build": "babel ./app -d build",
+    "build:watch": "babel ./app -d build --watch",
     "build:client": "webpack --config ./webpack.config.js/",
     "build:watch:client": "webpack --config ./webpack.config.js/ --watch",
-    "start:dev:client": "webpack-dev-server",
-    "start:dev": "parallelshell 'npm run build:watch:server' 'npm run build:watch:client' 'nodemon ./build/server/index.js'",
-    "build:prod": "npm run build:server && npm run build:client",
-    "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js"
+    "build:prod": "npm run build && npm run build:client",
+    "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js",
+    "start:dev": "parallelshell 'npm run build:watch' 'npm run build:watch:client' 'nodemon ./build/server/index.js'",
+    "test": "jest --watch --coverage"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
